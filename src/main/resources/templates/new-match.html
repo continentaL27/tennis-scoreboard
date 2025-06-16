@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Scoreboard | New Match</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/app.js}"></script>
+</head>
+<body>
+<header class="header">
+    <section class="nav-header">
+        <div class="brand">
+            <div class="nav-toggle">
+                <img src="../static/images/menu.png" alt="Logo" class="logo">
+            </div>
+            <span class="logo-text">TennisScoreboard</span>
+        </div>
+        <div>
+            <nav class="nav-links">
+                <a class="nav-link" th:href="@{/}">Home</a>
+                <a class="nav-link" th:href="@{/matches}">Matches</a>
+            </nav>
+        </div>
+    </section>
+</header>
+<main>
+    <div class="container">
+        <div>
+            <h1>Start new match</h1>
+            <div class="new-match-image"></div>
+            <div class="form-container center">
+                <form th:action="@{/new-match}" method="post">
+                    <!-- Сообщение об ошибке (можно сделать динамическим через Thymeleaf) -->
+                    <p th:if="${errorMessage != null}" style="color: red;" th:text="${errorMessage}">Sample error message</p>
+
+                    <!-- Первый игрок -->
+                    <label class="label-player" for="firstPlayerName">Player one</label>
+                    <input class="input-player"
+                           id="firstPlayerName"
+                           name="firstPlayerName"
+                           placeholder="Name"
+                           type="text"
+                           required
+                           title="Enter a name">
+
+                    <!-- Второй игрок -->
+                    <label class="label-player" for="secondPlayerName">Player two</label>
+                    <input class="input-player"
+                           id="secondPlayerName"
+                           name="secondPlayerName"
+                           placeholder="Name"
+                           type="text"
+                           required
+                           title="Enter a name">
+
+                    <input class="form-button" type="submit" value="Start">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
